@@ -1,0 +1,13 @@
+<!-- Cover Letter_list.html -->
+{% extends 'base_generic.html' %}
+{% block title %}Companies{% endblock %}
+{% block content %}
+  <h1>Companies</h1>
+  <a href="{% url 'Cover Letter_create' %}">Create New Cover Letter</a>
+  <ul>
+    {% for Cover Letter in Cover Letter_list %}
+      <li>{{ Cover Letter.name }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
