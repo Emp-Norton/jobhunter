@@ -1,5 +1,5 @@
 from django.urls import path
-from jobhunter import views
+import views
 
 urlpatterns = [
     path('', views.application_list, name='application_list'),
