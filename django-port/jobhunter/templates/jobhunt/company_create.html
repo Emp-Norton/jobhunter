@@ -1,0 +1,11 @@
+<!-- company_create.html -->
+ {% extends 'base_generic.html' %}
+ {% block title %}Create Company{% endblock %}
+ {% block content %}
+  <h1>Create Company</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+ {% endblock %}
