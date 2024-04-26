@@ -1,6 +1,13 @@
 from django.shortcuts import render, redirect
+from django_plotly_dash import DjangoDash
+
 from .models import Application
 from .forms import ApplicationForm
+
+app = DjangoDash('Job Application Dashboard')
+
+def dashboard(request):
+    return render(request, 'job_dashboard/dashboard.html')
 
 def application_list(request):
     applications = Application.objects.all()
@@ -31,3 +38,9 @@ def application_delete(request, pk):
     application = Application.objects.get(pk=pk)
     application.delete()
     return redirect('application_list')
+
+
+### Landing Page
+
+def index(request):
+    return render(request, 'landing.html')
