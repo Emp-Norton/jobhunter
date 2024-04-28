@@ -1,0 +1,13 @@
+FROM postgres:latest
+
+# Optional: Specify a specific PostgreSQL version (e.g., postgres:14-alpine)
+
+VOLUME /var/lib/postgresql/data
+
+# Environment variables for database configuration
+ENV POSTGRES_USER postgres
+ENV POSTGRES_PASSWORD mysecretpassword
+ENV POSTGRES_DB jobhuntdocker
+
+# Expose the standard PostgreSQL port
+EXPOSE 5432

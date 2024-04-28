@@ -1,0 +1,19 @@
+FROM python:3.9-slim 
+
+# Create the working directory
+WORKDIR /app
+
+# Copy requirements.txt 
+COPY requirements.txt /app/
+
+# Install dependencies
+RUN pip install -r /app/requirements.txt 
+
+# Copy Django project files
+COPY ./django-port/ /app/
+
+# Expose the port Django typically runs on
+EXPOSE 8000
+
+# Default command to run the Django server
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
