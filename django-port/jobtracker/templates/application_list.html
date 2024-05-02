@@ -1,0 +1,12 @@
+<!-- application_list.html -->
+{% extends 'base_template.html' %}
+{% block title %}Companies{% endblock %}
+{% block content %}
+  <h1>Applications</h1>
+  <a href="{% url 'application_create' %}">Create New application</a>
+  <ul>
+    {% for application in application_list %}
+      <li>{{ application.name }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

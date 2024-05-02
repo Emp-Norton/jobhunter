@@ -1,0 +1,12 @@
+<!-- Resume_list.html -->
+{% extends 'base_generic.html' %}
+{% block title %}Companies{% endblock %}
+{% block content %}
+  <h1>Companies</h1>
+  <a href="{% url 'Resume_create' %}">Create New Resume</a>
+  <ul>
+    {% for Resume in Resume_list %}
+      <li>{{ Resume.name }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
