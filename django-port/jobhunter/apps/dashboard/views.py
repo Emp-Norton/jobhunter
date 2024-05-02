@@ -1,12 +1,14 @@
 # dashboard/views.py
-from django.shortcuts import render
+from dash import html, dcc, Output, Input
+from django.db.models import Count
 from django_plotly_dash import DjangoDash
+from jobhunter.apps.jobhunt.models import Application
+
 import plotly.express as px
-from .models import Application, Company, CoverLetter
 
 # Create a Django Dash app instance
 app = DjangoDash('Dashboard', external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
-f# Dashboard layout
+# Dashboard layout
 app.layout = html.Div(children=[
     html.H1(children='Application Dashboard'),
 
