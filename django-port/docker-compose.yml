@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: keinos/sqlite3:latest
+    volumes:
+      - db-data:/var/lib/sqlite
+
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=sqlite:///db.sqlite3
+
+volumes:
+  db-data:
