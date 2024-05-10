@@ -1,0 +1,91 @@
+type Company {
+  company_id: ID!
+  name: String!
+}
+
+type Role {
+  role_id: ID!
+  company_id: ID!
+  description: String!
+  company: Company!
+}
+
+type Resume {
+  resume_id: ID!
+  body: String!
+  name: String!
+}
+
+type CoverLetter {
+  coverletter_id: ID!
+  body: String!
+  name: String!
+}
+
+type Application {
+  application_id: ID!
+  coverletter_id: ID!
+  role_id: ID!
+  resume_id: ID!
+  date_submitted: Date!
+  coverletter: CoverLetter!
+  role: Role!
+  resume: Resume!
+}
+
+input CompanyInput {
+  name: String!
+}
+
+input RoleInput {
+  company_id: ID!
+  description: String!
+}
+
+input ResumeInput {
+  body: String!
+  name: String!
+}
+
+input CoverLetterInput {
+  body: String!
+  name: String!
+}
+
+input ApplicationInput {
+  coverletter_id: ID!
+  role_id: ID!
+  resume_id: ID!
+  date_submitted: Date!
+}
+
+type Query {
+  companies: [Company!]!
+  roles: [Role!]!
+  resumes: [Resume!]!
+  coverletters: [CoverLetter!]!
+  applications: [Application!]!
+  company(company_id: ID!): Company
+  role(role_id: ID!): Role
+  resume(resume_id: ID!): Resume
+  coverletter(coverletter_id: ID!): CoverLetter
+  application(application_id: ID!): Application
+}
+
+type Mutation {
+  createCompany(input: CompanyInput!): Company
+  createRole(input: RoleInput!): Role
+  createResume(input: ResumeInput!): Resume
+  createCoverLetter(input: CoverLetterInput!): CoverLetter
+  createApplication(input: ApplicationInput!): Application
+  updateCompany(company_id: ID!, input: CompanyInput!): Company
+  updateRole(role_id: ID!, input: RoleInput!): Role
+  updateResume(resume_id: ID!, input: ResumeInput!): Resume
+  updateCoverLetter(coverletter_id: ID!, input: CoverLetterInput!): CoverLetter
+  updateApplication(application_id: ID!, input: ApplicationInput!): Application
+  deleteCompany(company_id: ID!): Boolean
+  deleteRole(role_id: ID!): Boolean
+  deleteResume(resume_id: ID!): Boolean
+  deleteCoverLetter(coverletter_id: ID!): Boolean
+  deleteApplication(application_id: ID!): Boolean
+}
